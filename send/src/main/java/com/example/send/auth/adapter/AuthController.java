@@ -1,6 +1,9 @@
 package com.example.send.auth.adapter;
 
+import com.example.send.auth.application.ports.AuthService;
 import com.example.send.auth.domain.AuthDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,11 +11,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1")
 public class AuthController {
 
-    @PostMapping("/get-message")
+
+    AuthService authService;
+
+
+    @PostMapping("/auth-login")
     public ResponseEntity<String> getMessage(@RequestBody AuthDto authDto) {
-        String username = authDto.getUsername();
-        String responseMessage = "Hello, " + username + "! Welcome to Spring Boot 3.";
-        return ResponseEntity.ok(responseMessage);
+          return ResponseEntity.ok(authService.authenticateUser(authDto));
     }
 
     @PostMapping("/auth-signup")
@@ -22,11 +27,6 @@ public class AuthController {
 
     @PostMapping("/auth-signout")
     public String signout() {
-        return "Login";
-    }
-
-    @PostMapping("/auth-login")
-    public String login() {
         return "Login";
     }
 
