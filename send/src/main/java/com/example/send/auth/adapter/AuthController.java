@@ -18,13 +18,13 @@ public class AuthController {
 
 
     @PostMapping("/auth-login")
-    public ResponseEntity<String> getMessage(@RequestBody AuthDto authDto) {
+    public ResponseEntity<String> userLogin(@RequestBody AuthDto authDto) {
           return ResponseEntity.ok(authService.authenticateUser(authDto));
     }
 
     @PostMapping("/auth-signup")
-    public String signup() {
-        return "Login";
+    public ResponseEntity<String> userSignUp(@RequestBody AuthDto authDto) {
+        return ResponseEntity.ok(authService.createUser(authDto));
     }
 
     @PostMapping("/auth-signout")

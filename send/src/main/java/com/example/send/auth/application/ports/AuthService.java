@@ -5,4 +5,5 @@ import org.springframework.stereotype.Service;
 
 public interface AuthService {
     String authenticateUser(AuthDto authDto);
+    String createUser(AuthDto authDto);
 }
