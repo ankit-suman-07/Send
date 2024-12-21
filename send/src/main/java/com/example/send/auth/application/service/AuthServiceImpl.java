@@ -22,4 +22,14 @@ public class AuthServiceImpl implements AuthService {
         }
         return "No User Found";
     }
+
+    private Boolean validateEmail(String email) {
+        if (email == null || email.isEmpty()) {
+            return false; // Invalid if email is null or empty
+        }
+        // Regular Expression for validating email
+        String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
+        return email.matches(emailRegex); // Returns true if the email matches the regex
+    }
+
 }
