@@ -17,7 +17,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public String createUser(AuthDto authDto) {
-        if(authDto.getUsername() != null && authDto.getPassword() != null) {
+        if(authDto.getUsername() != null && authDto.getPassword() != null && validateEmail(authDto.getEmail())) {
             return "User: " + authDto.getUsername() + " created with | Password: " + authDto.getPassword();
         }
         return "No User Found";
