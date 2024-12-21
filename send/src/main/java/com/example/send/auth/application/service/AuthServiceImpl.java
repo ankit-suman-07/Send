@@ -2,7 +2,9 @@ package com.example.send.auth.application.service;
 
 import com.example.send.auth.application.ports.AuthService;
 import com.example.send.auth.domain.AuthDto;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AuthServiceImpl implements AuthService {
 
     @Override
